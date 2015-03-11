@@ -34,18 +34,14 @@ public class MainApplet extends PApplet{
     stroke(100);
     for(int y=0;y<FHeigth/MapStY;y++){
       for(int x=0;x<FWigth/MapStX;x++){
+        if(log.Field[x][y].type!=0){
+          int[] cl=DopFunctions.color(log.Field[x][y].type);
+          fill(cl[0],cl[1],cl[2]);
+        }else{ fill(100);}
         rect(x*MapStX+Ots,y*MapStY+Ots,MapStX,MapStY);
       }
     }
     DrowNowBlock();
-    for(int i=0;i<log.Blocks.size();i++){
-
-      Block nw=log.Blocks.get(i);
-      //System.out.println(i+"  "+nw.x+"  "+nw.y);
-      int[] cl=DopFunctions.color(nw.type);
-      fill(cl[0],cl[1],cl[2]);
-      rect(nw.x*MapStX+Ots,nw.y,MapStX,MapStY);
-    }
   }
 
   void DrowNowBlock(){

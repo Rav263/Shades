@@ -5,11 +5,20 @@ public class Logic{
   static int Ots,FHeigth,FWigth,MapStX,MapStY;
   public static List<Block> Blocks=new ArrayList<>();
   public static Block nowBlock;
+  public static Block[][] Field =new Block[4][12];
   static DopFunctions DF=new DopFunctions();
   public Logic(){
     nowBlock=new Block();
+    Fulling();
     Add();
     DonData();
+  }
+  static void Fulling(){
+    for(int y=0;y<12;y++){
+      for(int x=0;x<4;x++){
+        Field[x][y]=DF.block(0,0,0);
+      }
+    }
   }
   static void Add(){
     nowBlock=DF.block(DF.Random(4)-1,Ots,DF.Random(5));
@@ -22,29 +31,32 @@ public class Logic{
   }
   static boolean Correct(){
     if(nowBlock.y>=FHeigth+Ots-MapStY){
-      Blocks.add(nowBlock);
+      Field[nowBlock.x][(nowBlock.y-Ots)/MapStY]=nowBlock;
       return false;
     }
-    for(int i=0;i<Blocks.size();i++){
-      Block bk=Blocks.get(i);
-      if(bk.x!=nowBlock.x)continue;
-      if(bk.y==nowBlock.y+MapStY){
-        if(OneToTwo(nowBlock,i,0))return false;
-        Blocks.add(nowBlock);
-        return false;
+    for(int y=0;y<12;y++){
+      for(int x=0;x<4;x++){
+        Block bk=Field[x][y];
+        if(bk.x!=nowBlock.x)continue;
+        if(bk.y==nowBlock.y+MapStY){
+          if(OneToTwo(nowBlock,x,y,0))return false;
+          Field[nowBlock.x][(nowBlock.y-Ots)/MapStY]=nowBlock;
+          return false;
+        }
       }
     }
     return true;
   }
-  static boolean OneToTwo(Block now,int index,int Deph){
-    Block bk=Blocks.get(index);
+  static boolean OneToTwo(Block now,int x,int y,int Deph){
+    Block bk=Field[x][y];
     if(now.type==6)return false;
     if(now.type!=bk.type)return false;
-    Blocks.set(index,DF.block(bk.x,bk.y,bk.type+1));
-    int nexIndex=Find(bk.y,bk.x);
-    if(nexIndex==-1)return true;
-    if(OneToTwo(Blocks.get(index),nexIndex,0))Blocks.remove(index);
-    
+    Field[x][y]=DF.block(x,y*MapStY+Ots,bk.type+1);
+    int nexIndex=(y+1);
+    if(nexIndex==12)return true;
+    if(OneToTwo(bk,x,nexIndex,0)){
+      Field[x][y]=DF.block(0,0,0);
+    }
     return true;
   }
   static int Find(int nowY,int nowX){
