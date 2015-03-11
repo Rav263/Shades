@@ -2,5 +2,15 @@
 comment0.params=
 comment0.target=Logic()
 comment1.params=
-comment1.target=void\ DonData()
-numComments=2
+comment1.target=void\ Add()
+comment2.params=
+comment2.target=void\ Move()
+comment3.params=
+comment3.target=boolean\ Correct()
+comment4.params=now\ bk\ index
+comment4.target=boolean\ OneToTwo(Block,\ Block,\ int)
+comment5.params=nowY
+comment5.target=int\ Find(int)
+comment6.params=
+comment6.target=void\ DonData()
+numComments=7
