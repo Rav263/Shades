@@ -1,33 +1,39 @@
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+import processing.core.PApplet;
+import processing.core.PImage;
 
-/**
- * Write a description of class MainApplet here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class MainApplet
-{
-  // instance variables - replace the example below with your own
-  private int x;
-
-  /**
-   * Constructor for objects of class MainApplet
-   */
-  public MainApplet()
-  {
-    // initialise instance variables
-    x = 0;
+public class MainApplet extends PApplet{
+  static int Heigth;
+  static int Wigth;
+  static int FHeigth;
+  static int FWigth;
+  static Logic log;
+  public static void main(String[] args){
+    PApplet.main("MainApplet");
   }
-
-  /**
-   * An example of a method - replace this comment with your own
-   * 
-   * @param  y   a sample parameter for a method
-   * @return     the sum of x and y 
-   */
-  public int sampleMethod(int y)
-  {
-    // put your code here
-    return x + y;
+  public void setup(){
+    DonData();
+    size(Wigth,Heigth);
+  }
+  public void draw(){
+    background(0);
+  }
+  static void DonData(){
+    Scanner sc=new Scanner(System.in);
+    try{
+      sc=new Scanner(new FileReader("Propertis.data"));
+    }catch(Exception e){
+      System.err.println("WTF");      
+    }
+    List<Integer> Don=new ArrayList<>();
+    for(;sc.hasNextInt();){
+      Don.add(sc.nextInt());
+    }
+    Heigth=Don.get(0);
+    Wigth=Don.get(1);
+    FHeigth=Don.get(2);
+    FWigth=Don.get(3);
   }
 }
