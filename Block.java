@@ -1,4 +1,4 @@
 public class Block{
-  public boolean bl;
+  public int x,y;
   public int type;
 }

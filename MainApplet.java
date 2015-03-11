@@ -10,6 +10,7 @@ public class MainApplet extends PApplet{
   static int FHeigth;
   static int FWigth;
   static int MapStX,MapStY;
+  static int Ots;
   static Logic log;
   public static void main(String[] args){
     PApplet.main("MainApplet");
@@ -38,5 +39,6 @@ public class MainApplet extends PApplet{
     FWigth=Don.get(3);
     MapStX=Don.get(4);
     MapStY=Don.get(5);
+    Ots=(Heigth-FHeigth)/2;
   }
 }
