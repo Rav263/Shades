@@ -27,10 +27,11 @@ public class MainApplet extends PApplet{
     background(210);
     fill(100);
     counter++;
-    if(counter%3==0){
+    if(counter%1==0){
       log.Move();
       counter=1;
-    } 
+    }
+    stroke(100);
     for(int y=0;y<FHeigth/MapStY;y++){
       for(int x=0;x<FWigth/MapStX;x++){
         rect(x*MapStX+Ots,y*MapStY+Ots,MapStX,MapStY);
@@ -56,7 +57,7 @@ public class MainApplet extends PApplet{
   }
 
   public void keyPressed(){
-    //log.
+    log.key(key);
   }
 
   static void DonData(){
