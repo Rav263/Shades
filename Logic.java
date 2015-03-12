@@ -1,3 +1,5 @@
+ 
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -67,8 +69,8 @@ public class Logic{
     return -1;
   }
   public static void key(int key){
-    if(key=='d' ||key=='D'||key=='Ð’' ||key=='Ð²')MoveRigth();
-    if(key=='a' ||key=='A'||key=='Ð¤' ||key=='Ñ„')MoveLeft();
+    if(key=='d' ||key=='D'||key=='Â' ||key=='â')MoveRigth();
+    if(key=='a' ||key=='A'||key=='Ô' ||key=='ô')MoveLeft();
     // if(key=='s' ||key=='S'||key=='Ð«' ||key=='Ñ‹')MoveDown();
   }
   public static void MoveDown(){
